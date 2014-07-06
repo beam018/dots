@@ -53,10 +53,10 @@ filetype plugin indent on
 
 NeoBundleCheck
 
-" command W w
-" command WQ wq
-" command Wq wq
-" command Q q
+command W w
+command WQ wq
+command Wq wq
+command Q q
 
 syntax enable
 " set background=light
