@@ -1,0 +1,85 @@
+[user]
+    name = Egor Svetlakov ( beam )
+    email = beam018@gmail.com
+[merge]
+    log = true
+    ff = false
+[branch]
+    autosetuprebase = always
+[branch "master"]
+    rebase = true
+[branch "develop"]
+    rebase = true
+[branch "release"]
+    rebase = true
+[push]
+    default = current
+[color]
+    ui = true
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[core]
+    pager = "less -r"
+    # Use custom `.gitignore` and `.gitattributes`
+    excludesfile = ~/.gitignore
+[diff]
+    noprefix = true
+    algorithm = patience
+[url "git@github.com:"]
+    pushInsteadOf = "gh:"
+    pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+    insteadOf = "gh:"
+
+[alias]
+    ci = commit
+    co = checkout
+    st = status -sb
+    br = branch
+    cp = cherry-pick
+
+    m = checkout master
+    d = checkout develop
+    r = checkout release
+
+    am = commit --amend
+    amend = commit --amend -C HEAD
+    undo = reset --soft HEAD^
+
+    url = config --get remote.origin.url
+
+    # search commits by message
+    search = "!f() { git log --all --grep=$1; }; f"
+
+    # show files ignored by git
+    ignored = ls-files -o -i --exclude-standard
+
+    # show tags and any tag annotation (tito adds tag annotations for example)
+    tags = tag -n1 -l
+
+    # Display the number of commits per author in numerical order
+    who = shortlog -sn --
+
+    merge-to = "!gitmergeto() { export current_branch=`git branch | grep '* ' | tr -d '* '` && git checkout $1 && git merge --no-ff $current_branch; unset current_branch; git branch;}; gitmergeto"
+
+    # various pretty loggers from various places
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    lc = log ORIG_HEAD.. --stat --no-merges
+    # from http://blog.kfish.org/2010/04/git-lola.html
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ll = log --graph --date=short
+
+    # file level ignoring http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
+    assume   = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+
+    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+
+    # easy merge
+    ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+
