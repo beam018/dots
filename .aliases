@@ -1,0 +1,29 @@
+alias c='source ~/.bash_profile'
+alias ep='vim ~/.bash_profile'
+alias ev='vim ~/.vimrc'
+
+
+alias e='vim'
+
+alias l43='ssh leon43'
+alias l42='ssh leon42'
+alias serp='ssh beam.serp.yandex.ru'
+
+alias jm42='jailmount leon42.yandex.ru'
+alias jm43='jailmount leon43.yandex.ru'
+alias jms='jailmount beam.serp.yandex.ru'
+
+alias ss='sh s.sh'
+alias bb='sh b.sh'
+
+alias gst='git st'
+alias gd='git diff'
+alias gs='git show'
+alias gdc='git diff --cached'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias la='ls -al'
+alias ll='ls -l'
