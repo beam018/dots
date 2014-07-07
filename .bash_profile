@@ -14,3 +14,15 @@ fi
 function tm { tmux -2 -S /tmp/tm-`whoami` "$@"; }
 
 source $HOME/dots/git-completion.bash
+
+# Universal make
+if [[ `which gmake` != '' ]]; then
+    alias make='gmake'
+else
+    alias gmake='make'
+fi
+
+# Universal ack
+if [[ `which 'ack-grep'` != '' ]]; then
+    alias ack='ack-grep'
+fi
